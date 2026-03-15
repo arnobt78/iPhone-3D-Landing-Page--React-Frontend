@@ -1,3 +1,4 @@
+// All paths are under public/ and served at root; no JS import so Vite won't warn about public assets
 export const heroImg = "/assets/images/hero.jpeg";
 
 export const heroVideo = "/assets/videos/hero.mp4";

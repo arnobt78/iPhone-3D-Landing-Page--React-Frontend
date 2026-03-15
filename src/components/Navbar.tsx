@@ -1,11 +1,12 @@
 import { appleImg, bagImg, searchImg } from "../utils";
 import { navLists } from "../constants";
 
-/** Top navigation bar with logo, nav links, and actions (tutorial: presentational component) */
+/** Top nav: logo (left), center nav labels, search + bag (right). Fixed-size wrappers prevent layout shift when images load. */
 function Navbar(): React.ReactElement {
   return (
     <header className="w-full min-h-[60px] py-5 sm:px-10 px-5 flex justify-between items-center">
       <nav className="flex w-full screen-max-width items-center">
+        {/* Logo: reserved 14x18px so navbar height doesn't jump */}
         <span className="flex shrink-0 w-[14px] h-[18px] min-w-[14px] min-h-[18px] items-center justify-center">
           <img
             src={appleImg}
@@ -17,6 +18,7 @@ function Navbar(): React.ReactElement {
           />
         </span>
 
+        {/* Center: nav labels from constants; hidden on small screens */}
         <div className="flex flex-1 justify-center max-sm:hidden">
           {navLists.map((nav) => (
             <div
@@ -28,6 +30,7 @@ function Navbar(): React.ReactElement {
           ))}
         </div>
 
+        {/* Right: search + bag icons; fixed size to avoid flicker */}
         <div className="flex shrink-0 items-center gap-7 max-sm:justify-end max-sm:flex-1 min-w-[52px]">
           <span className="flex w-[18px] h-[18px] min-w-[18px] min-h-[18px] items-center justify-center">
             <img

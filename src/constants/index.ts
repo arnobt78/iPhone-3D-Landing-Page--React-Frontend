@@ -9,10 +9,10 @@ import {
   yellowImg,
 } from "../utils";
 
-/** Top-level navigation items (tutorial: array of strings for nav) */
+/** Top-level nav labels; rendered in Navbar. Add/remove strings to change nav items. */
 export const navLists = ["Store", "Mac", "iPhone", "Support"];
 
-/** Slide data for the highlights video carousel */
+/** One slide in the highlights carousel: id, text lines, video URL, and duration (for progress bar). */
 export interface HighlightSlide {
   id: number;
   textLists: string[];
@@ -20,7 +20,7 @@ export interface HighlightSlide {
   videoDuration: number;
 }
 
-export const hightlightsSlides: HighlightSlide[] = [
+export const highlightsSlides: HighlightSlide[] = [
   {
     id: 1,
     textLists: [
@@ -55,7 +55,7 @@ export const hightlightsSlides: HighlightSlide[] = [
   },
 ];
 
-/** iPhone model variant (color + texture image) */
+/** One iPhone color option. color[0] is applied to body materials; img is used for the screen texture. */
 export interface ModelItem {
   id: number;
   title: string;
@@ -90,7 +90,7 @@ export const models: ModelItem[] = [
   },
 ];
 
-/** Size option for 3D model view */
+/** Display size for 3D model. value drives which view (small 6.1" / large 6.7") is visible. */
 export interface SizeOption {
   label: string;
   value: "small" | "large";
@@ -101,7 +101,7 @@ export const sizes: SizeOption[] = [
   { label: '6.7"', value: "large" },
 ];
 
-/** Footer link labels */
+/** Footer legal/site links; rendered in a row with separators. */
 export const footerLinks = [
   "Privacy Policy",
   "Terms of Use",

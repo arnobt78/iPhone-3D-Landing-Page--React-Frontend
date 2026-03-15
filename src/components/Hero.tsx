@@ -3,8 +3,9 @@ import { useGSAP } from "@gsap/react";
 import { heroVideo, smallHeroVideo } from "../utils";
 import { useEffect, useState } from "react";
 
-/** Hero section with title and responsive video (tutorial: useState + useEffect + useGSAP) */
+/** Hero: title, responsive hero video (small vs full), CTA. useGSAP runs once on mount for fade-in. */
 function Hero(): React.ReactElement {
+  // Pick video by viewport: smallHero for narrow (e.g. mobile), hero for desktop
   const [videoSrc, setVideoSrc] = useState<string>(
     window.innerWidth < 760 ? smallHeroVideo : heroVideo
   );
@@ -24,6 +25,7 @@ function Hero(): React.ReactElement {
     };
   }, []);
 
+  // Entrance: title and CTA fade in after 2s (no scroll trigger)
   useGSAP(() => {
     gsap.to("#hero", { opacity: 1, delay: 2 });
     gsap.to("#cta", { opacity: 1, y: -50, delay: 2 });

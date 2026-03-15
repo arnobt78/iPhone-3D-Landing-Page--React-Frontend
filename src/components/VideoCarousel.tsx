@@ -5,9 +5,10 @@ import { ScrollTrigger } from "gsap/all";
 gsap.registerPlugin(ScrollTrigger);
 
 import { useEffect, useRef, useState } from "react";
-import { hightlightsSlides } from "../constants";
+import { highlightsSlides } from "../constants";
 import { pauseImg, playImg, replayImg } from "../utils";
 
+/** Tracks which slide is active, play state, and whether we've reached the last video (for replay). */
 interface VideoState {
   isEnd: boolean;
   startPlay: boolean;
@@ -16,7 +17,7 @@ interface VideoState {
   isPlaying: boolean;
 }
 
-/** Video carousel with progress indicators (tutorial: useRef arrays, GSAP ticker, state) */
+/** Four-slide carousel: each slide has video + text. Refs hold DOM refs per index; GSAP moves #slider and drives progress bars. */
 function VideoCarousel(): React.ReactElement {
   const videoRef = useRef<(HTMLVideoElement | null)[]>([]);
   const videoSpanRef = useRef<(HTMLSpanElement | null)[]>([]);
@@ -33,6 +34,7 @@ function VideoCarousel(): React.ReactElement {
   const [loadedData, setLoadedData] = useState<unknown[]>([]);
   const { isEnd, isLastVideo, startPlay, videoId, isPlaying } = video;
 
+  // Slide position by videoId; when video ends we advance and this re-runs
   useGSAP(() => {
     gsap.to("#slider", {
       transform: `translateX(${-100 * videoId}%)`,
@@ -55,6 +57,7 @@ function VideoCarousel(): React.ReactElement {
     });
   }, [isEnd, videoId]);
 
+  // Progress bar: GSAP tween on span; onUpdate syncs width to progress; gsap.ticker drives progress from video currentTime
   useEffect(() => {
     const span = videoSpanRef.current;
     const div = videoDivRef.current;
@@ -105,7 +108,7 @@ function VideoCarousel(): React.ReactElement {
 
     const animUpdate = (): void => {
       const vid = vRef[videoId];
-      const slide = hightlightsSlides[videoId];
+      const slide = highlightsSlides[videoId];
       if (vid && slide)
         anim.progress(vid.currentTime / slide.videoDuration);
     };
@@ -121,6 +124,7 @@ function VideoCarousel(): React.ReactElement {
     };
   }, [videoId, startPlay, isPlaying]);
 
+  // Play/pause current video when startPlay or isPlaying change; wait until all 4 videos have fired onLoadedMetadata
   useEffect(() => {
     const vRef = videoRef.current;
     if (loadedData.length <= 3) return;
@@ -140,6 +144,7 @@ function VideoCarousel(): React.ReactElement {
     | "pause"
     | "play";
 
+  /** Advance to next slide, go to last state, reset to first, or toggle play/pause. */
   const handleProcess = (type: ProcessType, i?: number): void => {
     switch (type) {
       case "video-end":
@@ -172,7 +177,7 @@ function VideoCarousel(): React.ReactElement {
   return (
     <>
       <div className="flex items-center">
-        {hightlightsSlides.map((list, i) => (
+        {highlightsSlides.map((list, i) => (
           <div key={list.id} id="slider" className="sm:pr-20 pr-10">
             <div className="video-carousel_container">
               <div className="w-full h-full flex-center rounded-3xl overflow-hidden bg-black">
@@ -215,7 +220,7 @@ function VideoCarousel(): React.ReactElement {
 
       <div className="relative flex-center mt-10">
         <div className="flex-center py-5 px-7 bg-gray-300 backdrop-blur rounded-full">
-          {hightlightsSlides.map((_, i) => (
+          {highlightsSlides.map((_, i) => (
             <span
               key={i}
               className="mx-2 w-3 h-3 bg-gray-200 rounded-full relative cursor-pointer"

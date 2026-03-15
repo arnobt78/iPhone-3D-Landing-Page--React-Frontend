@@ -3,6 +3,7 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
+      /* Custom palette: blue (CTA), gray variants, zinc (section bg) */
       colors: {
         blue: "#2997FF",
         gray: {

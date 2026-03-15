@@ -23,8 +23,7 @@ export interface ModelViewProps {
 }
 
 /**
- * Single 3D viewport: camera, lights, orbit controls, and iPhone model.
- * Tutorial: View from drei gives a div-like viewport for R3F; refs for GSAP sync.
+ * One 3D viewport (view1 or view2). View has id for GSAP; groupRef is the THREE.Group we animate in Model. onEnd saves rotation for timeline sync.
  */
 function ModelView({
   index,
@@ -62,6 +61,7 @@ function ModelView({
         position={[0, 0, 0]}
       >
         <Suspense fallback={<Loader />}>
+          {/* scale differs by index so small/large views have different model size */}
           <IPhone
             scale={index === 1 ? [15, 15, 15] : [17, 17, 17]}
             item={item}

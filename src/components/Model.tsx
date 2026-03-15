@@ -20,8 +20,7 @@ const defaultModel: ModelItem = {
 };
 
 /**
- * 3D model section: two views (small/large) with color picker and size toggle.
- * Tutorial: useRef for Three.js groups and camera controls; GSAP timeline for view transition.
+ * 3D section: two ModelViews (view1 = small, view2 = large). Size toggle runs GSAP timeline to slide views; color dots set active model.
  */
 function Model(): React.ReactElement {
   const [size, setSize] = useState<"small" | "large">("small");
@@ -35,6 +34,7 @@ function Model(): React.ReactElement {
   const [largeRotation, setLargeRotation] = useState(0);
   const tlRef = useRef(gsap.timeline());
 
+  // When size changes, run timeline: animate rotation of the outgoing view's group, then translate both view divs
   useEffect(() => {
     const tl = tlRef.current;
     if (size === "large") {
@@ -72,6 +72,7 @@ function Model(): React.ReactElement {
 
         <div className="flex flex-col items-center mt-5">
           <div className="w-full h-[75vh] md:h-[90vh] overflow-hidden relative">
+            {/* view1 = small (6.1"); view2 = large (6.7"). Both share same Canvas via View.Port below. */}
             <ModelView
               index={1}
               groupRef={small}

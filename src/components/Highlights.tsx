@@ -3,7 +3,7 @@ import gsap from "gsap";
 import { rightImg, watchImg } from "../utils";
 import VideoCarousel from "./VideoCarousel";
 
-/** Highlights section with heading and video carousel (tutorial: useGSAP for entrance animations) */
+/** Section "Get the highlights": heading + two link lines + VideoCarousel. stagger animates links one after the other. */
 function Highlights(): React.ReactElement {
   useGSAP(() => {
     gsap.to("#title", { opacity: 1, y: 0 });

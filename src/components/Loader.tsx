@@ -1,7 +1,7 @@
 import { Html } from "@react-three/drei";
 import React from "react";
 
-/** Loading fallback for 3D model (tutorial: Suspense fallback in React Three) */
+/** Shown while GLB is loading. Drei Html renders DOM inside the 3D scene. */
 function Loader(): React.ReactElement {
   return (
     <Html>

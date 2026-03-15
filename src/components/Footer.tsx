@@ -1,7 +1,7 @@
 import { Copyright } from "lucide-react";
 import { footerLinks } from "../constants";
 
-/** Footer with shop info and legal links (tutorial: list rendering with key) */
+/** Footer: shop text, divider, copyright (Lucide icon + current year), then footerLinks with separators. */
 function Footer(): React.ReactElement {
   return (
     <footer className="py-5 sm:px-10 px-5">

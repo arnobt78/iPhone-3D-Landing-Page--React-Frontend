@@ -11,7 +11,7 @@ import React, { useEffect } from "react";
 import { useGLTF, useTexture } from "@react-three/drei";
 import type { ModelItem } from "../constants";
 
-/** Material keys that should not be recolored (screen, glass, etc.) */
+/** GLB material names we leave unchanged (screen, glass, etc.); all others get item.color[0]. */
 const EXCLUDED_MATERIAL_KEYS = new Set([
   "zFdeDaGNRwzccye",
   "ujsvqBWRMnqdwPx",
@@ -27,8 +27,7 @@ export interface IPhoneProps {
 }
 
 /**
- * iPhone 15 Pro GLB mesh with dynamic color from item.
- * Tutorial: useGLTF loads the model; useTexture for dynamic texture; materials loop for color.
+ * Renders the iPhone GLB: meshes from useGLTF, screen texture from useTexture(item.img). Body materials get item.color[0] except excluded keys.
  */
 interface GLTFNodes {
   [key: string]: THREE.Mesh;
@@ -42,6 +41,7 @@ function IPhone({ scale, item }: IPhoneProps): React.ReactElement {
   const { nodes, materials } = gltf;
   const texture = useTexture(item.img);
 
+  // When item (color choice) changes, update material colors so the 3D body matches the selected variant
   useEffect(() => {
     for (const [key, material] of Object.entries(materials)) {
       if (!EXCLUDED_MATERIAL_KEYS.has(key)) {

@@ -7,7 +7,7 @@ import HowItWorks from "./components/HowItWorks";
 import Footer from "./components/Footer";
 import * as Sentry from "@sentry/react";
 
-/** Root App component – composes all section components (tutorial: composition) */
+/** Root App: single-page layout. Each child is a full-width section; order = scroll order. */
 function AppRoot(): React.ReactElement {
   return (
     <main className="bg-black">
@@ -22,5 +22,5 @@ function AppRoot(): React.ReactElement {
   );
 }
 
-const App = Sentry.withProfiler(AppRoot);
+const App = import.meta.env.VITE_SENTRY_DSN ? Sentry.withProfiler(AppRoot) : AppRoot;
 export default App;

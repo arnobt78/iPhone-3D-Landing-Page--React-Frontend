@@ -4,7 +4,7 @@ import gsap from "gsap";
 import { animateWithGsap } from "../utils/animations";
 import { explore1Img, explore2Img, exploreVideo } from "../utils";
 
-/** Features section: scroll-triggered video and text (tutorial: ref for video, ScrollTrigger) */
+/** "Explore the full story": heading, two big titles, explore video, two images (g_grow), two text blocks (g_text). All scroll-triggered. */
 function Features(): React.ReactElement {
   const videoRef = useRef<HTMLVideoElement>(null);
 

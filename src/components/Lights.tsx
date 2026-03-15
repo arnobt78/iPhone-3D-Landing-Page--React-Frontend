@@ -1,8 +1,7 @@
 import { Environment, Lightformer } from "@react-three/drei";
 
 /**
- * 3D scene lighting: environment map + lightformers + spotlights.
- * Tutorial: group organizes lights; Environment provides reflections; SpotLight for key light.
+ * 3D lighting: Environment (reflections/skybox), Lightformers (fill), spotLights (key/fill). Used inside each ModelView.
  */
 function Lights(): React.ReactElement {
   return (
@@ -33,6 +32,7 @@ function Lights(): React.ReactElement {
         </group>
       </Environment>
 
+      {/* Spotlights give directional light and soft shadows on the model */}
       <spotLight
         position={[-2, 10, 5]}
         angle={0.15}

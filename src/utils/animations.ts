@@ -5,7 +5,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-/** GSAP scroll-triggered animation helper (tutorial: reusable animation util) */
+/** Runs a GSAP tween when target enters view (start: top 85%). Use for section headings, text, images. */
 export function animateWithGsap(
   target: string | object,
   animationProps: gsap.TweenVars,
@@ -22,7 +22,7 @@ export function animateWithGsap(
   });
 }
 
-/** Timeline-based transition between two model views (tutorial: GSAP timeline) */
+/** Animates 3D group rotation then both view panels in parallel ("<" = same start time). Used when switching small/large model view. */
 export function animateWithGsapTimeline(
   timeline: gsap.core.Timeline,
   rotationRef: RefObject<THREE.Group>,
@@ -33,6 +33,7 @@ export function animateWithGsapTimeline(
 ): void {
   const group = rotationRef.current;
   if (!group) return;
+  // Sync rotation state so the 3D model angle matches after view switch
   timeline.to(group.rotation, {
     y: rotationState,
     duration: 1,

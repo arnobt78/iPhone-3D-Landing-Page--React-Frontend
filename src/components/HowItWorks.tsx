@@ -4,7 +4,7 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { animateWithGsap } from "../utils/animations";
 
-/** How it works: A17 Pro chip section with video (tutorial: scroll-triggered animations) */
+/** A17 Pro chip section: chip image (gsap.from scale/opacity), title, frame + game video, then text blocks with g_fadeIn. */
 function HowItWorks(): React.ReactElement {
   const videoRef = useRef<HTMLVideoElement>(null);
 
