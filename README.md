@@ -1,22 +1,6 @@
-# Modern 3D Landing UI Interactive IPhone 15 Pro Page - React Website
+# iPhone 15 Showcase Landing Page - React, Vite, Typescript, 3D Model, Three.js, GSAP, TailwindCSS Frontend Project
 
-![Screenshot 2025-07-30 at 14 44 39](https://github.com/user-attachments/assets/89d167f9-90e5-420d-b79c-86bde2df42f7)
-![Screenshot 2025-07-30 at 14 45 01](https://github.com/user-attachments/assets/0f82cb68-5fcb-47aa-921c-356d1c1ee9e8)
-![Screenshot 2025-07-30 at 14 45 26](https://github.com/user-attachments/assets/b615a648-89b5-4257-829c-e1c073ef3be5)
-![Screenshot 2025-07-30 at 14 45 50](https://github.com/user-attachments/assets/1a876950-53e2-4e2a-8bee-4eb7867afce3)
-![Screenshot 2025-07-30 at 14 46 01](https://github.com/user-attachments/assets/565e5aea-dcb0-4e18-b553-6d7399dea815)
-![Screenshot 2025-07-30 at 14 46 16](https://github.com/user-attachments/assets/48900118-c3b5-4cf5-841f-6adb612994e6)
-![Screenshot 2025-07-30 at 14 46 41](https://github.com/user-attachments/assets/3a768b56-3d0d-4c24-ace8-885c7179c224)
-
----
-
-## Project Overview
-
-This project is a modern, interactive ReactJS website inspired by the Apple iPhone 15 Pro Max product page. It showcases advanced UI/UX, 3D model integration, smooth animations, and responsive design. The site is built for learning, demonstration, and as a template for high-quality product landing pages.
-
-- **Live-Demo:** [https://modern-iphone-3d-ui.netlify.app/](https://modern-iphone-3d-ui.netlify.app/)
-
----
+- **Live Demo:** []()
 
 ### Table of Contents
 
@@ -114,9 +98,9 @@ Each component is modular and can be reused in other React projects:
 To reuse a component, import it in your React project and provide necessary props (see each file for details). For example:
 
 ```jsx
-import Model from './components/Model';
+import Model from "./components/Model";
 
-<Model />
+<Model />;
 ```
 
 ---
@@ -137,7 +121,7 @@ import Model from './components/Model';
    ```
 
 3. **Start the development server:**
-  
+
    ```sh
    npm run dev
    ```
@@ -206,7 +190,7 @@ This project demonstrates how to build a modern, interactive product landing pag
 
 ## Happy Coding! 🎉
 
-Feel free to use this Project Repository and extend this project further!  
+Feel free to use this Project Repository and extend this project further!
 
 If you have any questions or want to share your work, reach out via GitHub or my portfolio [https://arnob-mahmud.vercel.app/](https://arnob-mahmud.vercel.app/).
 

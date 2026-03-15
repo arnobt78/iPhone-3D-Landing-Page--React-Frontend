@@ -9,9 +9,18 @@ import {
   yellowImg,
 } from "../utils";
 
+/** Top-level navigation items (tutorial: array of strings for nav) */
 export const navLists = ["Store", "Mac", "iPhone", "Support"];
 
-export const hightlightsSlides = [
+/** Slide data for the highlights video carousel */
+export interface HighlightSlide {
+  id: number;
+  textLists: string[];
+  video: string;
+  videoDuration: number;
+}
+
+export const hightlightsSlides: HighlightSlide[] = [
   {
     id: 1,
     textLists: [
@@ -46,7 +55,15 @@ export const hightlightsSlides = [
   },
 ];
 
-export const models = [
+/** iPhone model variant (color + texture image) */
+export interface ModelItem {
+  id: number;
+  title: string;
+  color: [string, string, string];
+  img: string;
+}
+
+export const models: ModelItem[] = [
   {
     id: 1,
     title: "iPhone 15 Pro in Natural Titanium",
@@ -73,11 +90,18 @@ export const models = [
   },
 ];
 
-export const sizes = [
+/** Size option for 3D model view */
+export interface SizeOption {
+  label: string;
+  value: "small" | "large";
+}
+
+export const sizes: SizeOption[] = [
   { label: '6.1"', value: "small" },
   { label: '6.7"', value: "large" },
 ];
 
+/** Footer link labels */
 export const footerLinks = [
   "Privacy Policy",
   "Terms of Use",
